@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Snake com IA</title>
+<title>Snake Game 🐍</title>
+
 <style>
     body {
         margin: 0;
@@ -16,123 +17,14 @@
         flex-direction: column;
     }
 
-    canvas {
-        background: #000;
-        border: 4px solid #0f0;
-    }
-
     h1 {
         margin-bottom: 10px;
     }
-</style>
-</head>
-<body>
 
-<h1>🐍 Snake com Inteligência Artificial</h1>
-<canvas id="game" width="400" height="400"></canvas>
-
-<script>
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
-
-const size = 20;
-const tiles = canvas.width / size;
-
-let snake = [{x: 10, y: 10}];
-let direction = {x: 1, y: 0};
-let food = spawnFood();
-
-function spawnFood() {
-    return {
-        x: Math.floor(Math.random() * tiles),
-        y: Math.floor(Math.random() * tiles)
-    };
-}
-
-function drawRect(x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * size, y * size, size, size);
-}
-
-function collision(x, y) {
-    return (
-        x < 0 || y < 0 ||
-        x >= tiles || y >= tiles ||
-        snake.some(s => s.x === x && s.y === y)
-    );
-}
-
-// === IA DA COBRA ===
-function aiMove() {
-    const head = snake[0];
-    const moves = [
-        {x: 1, y: 0},
-        {x: -1, y: 0},
-        {x: 0, y: 1},
-        {x: 0, y: -1}
-    ];
-
-    let bestMove = direction;
-    let bestDist = Infinity;
-
-    for (let move of moves) {
-        const nx = head.x + move.x;
-        const ny = head.y + move.y;
-
-        if (collision(nx, ny)) continue;
-
-        const dist = Math.abs(nx - food.x) + Math.abs(ny - food.y);
-        if (dist < bestDist) {
-            bestDist = dist;
-            bestMove = move;
-        }
+    #score {
+        margin-bottom: 10px;
+        font-size: 20px;
     }
 
-    direction = bestMove;
-}
-
-function update() {
-    aiMove();
-
-    const head = {
-        x: snake[0].x + direction.x,
-        y: snake[0].y + direction.y
-    };
-
-    if (collision(head.x, head.y)) {
-        alert("Fim de jogo!");
-        snake = [{x: 10, y: 10}];
-        direction = {x: 1, y: 0};
-        food = spawnFood();
-        return;
-    }
-
-    snake.unshift(head);
-
-    if (head.x === food.x && head.y === food.y) {
-        food = spawnFood();
-    } else {
-        snake.pop();
-    }
-}
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    drawRect(food.x, food.y, "red");
-
-    snake.forEach((s, i) =>
-        drawRect(s.x, s.y, i === 0 ? "#0f0" : "#0a0")
-    );
-}
-
-function loop() {
-    update();
-    draw();
-}
-
-setInterval(loop, 120);
-</script>
-
-</body>
-</html>
+    canvas {
+        bac
