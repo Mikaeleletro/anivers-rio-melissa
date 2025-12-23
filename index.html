@@ -82,4 +82,135 @@
 <script>
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
-const scoreEl = document.getElementById(
+const scoreEl = document.getElementById("score");
+
+const startScreen = document.getElementById("startScreen");
+const gameOverScreen = document.getElementById("gameOverScreen");
+
+const size = 20;
+const tiles = canvas.width / size;
+
+let snake, direction, food, score;
+let speed;
+let loop = null;
+let gameState = "start"; // start | playing | gameover
+
+// ===== SONS =====
+const eatSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-quick-lock-sound-2854.mp3");
+const deadSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-retro-arcade-game-over-470.mp3");
+
+// ===== FUNÇÕES =====
+function resetGame() {
+    snake = [{x: 10, y: 10}];
+    direction = {x: 1, y: 0};
+    food = spawnFood();
+    score = 0;
+    speed = 120;
+    scoreEl.textContent = "Pontos: 0";
+}
+
+function spawnFood() {
+    return {
+        x: Math.floor(Math.random() * tiles),
+        y: Math.floor(Math.random() * tiles)
+    };
+}
+
+function drawBlock(x, y, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x * size, y * size, size, size);
+}
+
+function collision(x, y) {
+    return (
+        x < 0 || y < 0 ||
+        x >= tiles || y >= tiles ||
+        snake.some(s => s.x === x && s.y === y)
+    );
+}
+
+// ===== CONTROLES =====
+document.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+        if (gameState === "start" || gameState === "gameover") {
+            startGame();
+        }
+    }
+
+    if (gameState !== "playing") return;
+
+    if (e.key === "ArrowUp" && direction.y === 0)
+        direction = {x: 0, y: -1};
+    if (e.key === "ArrowDown" && direction.y === 0)
+        direction = {x: 0, y: 1};
+    if (e.key === "ArrowLeft" && direction.x === 0)
+        direction = {x: -1, y: 0};
+    if (e.key === "ArrowRight" && direction.x === 0)
+        direction = {x: 1, y: 0};
+});
+
+function startGame() {
+    resetGame();
+    startScreen.style.display = "none";
+    gameOverScreen.style.display = "none";
+    gameState = "playing";
+
+    clearInterval(loop);
+    loop = setInterval(gameLoop, speed);
+}
+
+function gameOver() {
+    gameState = "gameover";
+    deadSound.play();
+    gameOverScreen.style.display = "flex";
+    clearInterval(loop);
+}
+
+// ===== LOOP =====
+function update() {
+    const head = {
+        x: snake[0].x + direction.x,
+        y: snake[0].y + direction.y
+    };
+
+    if (collision(head.x, head.y)) {
+        gameOver();
+        return;
+    }
+
+    snake.unshift(head);
+
+    if (head.x === food.x && head.y === food.y) {
+        eatSound.play();
+        score++;
+        scoreEl.textContent = "Pontos: " + score;
+        food = spawnFood();
+
+        if (speed > 50) {
+            speed -= 5;
+            clearInterval(loop);
+            loop = setInterval(gameLoop, speed);
+        }
+    } else {
+        snake.pop();
+    }
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawBlock(food.x, food.y, "red");
+
+    snake.forEach((s, i) =>
+        drawBlock(s.x, s.y, i === 0 ? "#00ff88" : "#00cc66")
+    );
+}
+
+function gameLoop() {
+    update();
+    draw();
+}
+</script>
+
+</body>
+</html>
