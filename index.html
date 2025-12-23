@@ -7,7 +7,7 @@
 <style>
     body {
         margin: 0;
-        background: #111;
+        background: radial-gradient(circle, #222, #000);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,8 +17,14 @@
         flex-direction: column;
     }
 
+    canvas {
+        background: #000;
+        border: 5px solid #00ff88;
+    }
+
     h1 {
         margin-bottom: 10px;
+        color: #00ff88;
     }
 
     #score {
@@ -26,5 +32,54 @@
         font-size: 20px;
     }
 
-    canvas {
-        bac
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        z-index: 10;
+    }
+
+    .overlay h2 {
+        margin-bottom: 20px;
+        color: #00ff88;
+    }
+
+    .overlay p {
+        font-size: 18px;
+        max-width: 400px;
+    }
+</style>
+</head>
+<body>
+
+<h1>🐍 Snake Game</h1>
+<div id="score">Pontos: 0</div>
+<canvas id="game" width="400" height="400"></canvas>
+
+<!-- TELA INICIAL -->
+<div id="startScreen" class="overlay">
+    <h2>Bem-vindo ao Snake 🐍</h2>
+    <p>
+        Use as setinhas do teclado para jogar.<br>
+        Quanto mais você come, mais rápido fica!<br><br>
+        👉 Pressione <b>ENTER</b> para começar
+    </p>
+</div>
+
+<!-- GAME OVER -->
+<div id="gameOverScreen" class="overlay" style="display:none;">
+    <h2>💀 Game Over</h2>
+    <p>
+        Pressione <b>ENTER</b> para jogar novamente
+    </p>
+</div>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+const scoreEl = document.getElementById(
