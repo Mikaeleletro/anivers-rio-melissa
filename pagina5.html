@@ -1,188 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>19 de Fevereiro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>19 de Fevereiro</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, #ffd6e7, #ffb6d9);
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #ffd6e7, #ffb6d9);
+    font-family: Arial, sans-serif;
 
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        body.mostrar {
-            opacity: 1;
-        }
+    min-height: 100vh;
+    text-align: center;
 
-        .container {
-            margin-top: 60px;
-            max-width: 850px;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
+    opacity: 0;
+    transition: opacity 1s ease;
+}
 
-        .titulo {
-            font-size: 46px;
-            font-weight: bold;
-            color: #ff1493;
-            margin-bottom: 10px;
-        }
+body.mostrar {
+    opacity: 1;
+}
 
-        .hora {
-            font-size: 22px;
-            font-family: monospace;
-            background-color: white;
-            color: #c71585;
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 10px rgba(255,20,147,0.4);
-        }
+.container {
+    margin-top: 60px;
+    max-width: 850px;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
 
-        .rosa-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-            animation: flutuar 3s ease-in-out infinite;
-        }
+.titulo {
+    font-size: 38px;
+    font-weight: bold;
+    color: #ff1493;
+    margin-bottom: 10px;
+}
 
-        @keyframes flutuar {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+.hora {
+    font-size: 18px;
+    font-family: monospace;
+    background-color: white;
+    color: #c71585;
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(255,20,147,0.4);
+}
 
-        .texto {
-            font-size: 20px;
-            color: #c71585;
-            line-height: 1.8;
-            animation: aparecer 1.5s ease forwards;
-        }
+.rosa-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+    animation: flutuar 3s ease-in-out infinite;
+}
 
-        @keyframes aparecer {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+@keyframes flutuar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
 
-        .tulipa {
-            color: #ff69b4;
-            font-style: italic;
-            font-weight: bold;
-        }
+.texto {
+    font-size: 18px;
+    color: #c71585;
+    line-height: 1.8;
+    animation: aparecer 1.5s ease forwards;
+    padding: 0 10px;
+}
 
-        button {
-            margin-bottom: 60px;
-            padding: 15px 40px;
-            font-size: 20px;
-            border: none;
-            border-radius: 12px;
-            background-color: #ff1493;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        button:hover {
-            transform: scale(1.05);
-        }
+.tulipa {
+    color: #ff69b4;
+    font-style: italic;
+    font-weight: bold;
+}
 
-        /* Pétalas */
-        .petala {
-            position: absolute;
-            top: -10px;
-            font-size: 18px;
-            animation: cair linear infinite;
-            opacity: 0.7;
-        }
+button {
+    margin: 50px 0;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ff1493;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
 
-        @keyframes cair {
-            to {
-                transform: translateY(110vh) rotate(360deg);
-            }
-        }
+button:hover {
+    transform: scale(1.05);
+}
 
-    </style>
+/* Pétalas */
+.petala {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    animation: cair linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .titulo {
+        font-size: 26px;
+    }
+
+    .texto {
+        font-size: 16px;
+    }
+
+    button {
+        width: 80%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="titulo">
-            19 de fevereiro 🌹
-        </div>
-
-        <div class="hora">
-            23:21
-        </div>
-
-        <div class="rosa-icon">🌹</div>
-
-        <div class="texto">
-            Mudamos a data, achamos que seria melhor. O Sr. Almir não gostou muito da data que tínhamos pensado antes, então decidimos ajustar.  
-            No fundo, quero que tudo aconteça da melhor forma possível, sem pressa e do jeito certo.  
-
-            <br><br>
-
-            Agora são 23:21, e eu estava olhando o preço de algumas rosas, porque né… um pedido de namoro não pode faltar uma rosa.  
-
-            <br><br>
-
-            Eu queria uma <span class="tulipa">tulipa</span>
-            Mas a loja não vende, que raiva, odiei.  
-
-            <br><br>
-
-            Mesmo assim, escolhi a rosa. Fiquei pensando em qual seria a mais bonita, qual combinaria mais com o momento.  
-            Pode parecer detalhe pequeno, mas para mim não é. Cada coisinha importa.  
-
-            <br><br>
-
-            Espero que você tenha gostado. Mesmo não sendo a tulipa, foi escolhida com todo carinho do mundo. 💖
-        </div>
-
+    <div class="titulo">
+        19 de fevereiro 🌹
     </div>
 
-    <button onclick="mudarPagina('pagina6.html')">
-        Continuar 💌
-    </button>
+    <div class="hora">
+        23:21
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add("mostrar");
+    <div class="rosa-icon">🌹</div>
 
-            // Criar pétalas caindo
-            for (let i = 0; i < 25; i++) {
-                let petala = document.createElement("div");
-                petala.classList.add("petala");
-                petala.innerHTML = "🌸";
-                petala.style.left = Math.random() * 100 + "vw";
-                petala.style.animationDuration = (5 + Math.random() * 5) + "s";
-                document.body.appendChild(petala);
-            }
-        });
+    <div class="texto">
+        Mudamos a data, achamos que seria melhor. O Sr. Almir não gostou muito da data que tínhamos pensado antes, então decidimos ajustar.  
+        No fundo, quero que tudo aconteça da melhor forma possível, sem pressa e do jeito certo.  
 
-        function mudarPagina(url) {
-            document.body.style.opacity = "0";
-            setTimeout(function() {
-                window.location.href = url;
-            }, 1000);
-        }
-    </script>
+        <br><br>
+
+        Agora são 23:21, e eu estava olhando o preço de algumas rosas, porque né… um pedido de namoro não pode faltar uma rosa.  
+
+        <br><br>
+
+        Eu queria uma <span class="tulipa">tulipa</span>
+        Mas a loja não vende, que raiva, odiei.  
+
+        <br><br>
+
+        Mesmo assim, escolhi a rosa. Fiquei pensando em qual seria a mais bonita, qual combinaria mais com o momento.  
+        Pode parecer detalhe pequeno, mas para mim não é. Cada coisinha importa.  
+
+        <br><br>
+
+        Espero que você tenha gostado. Mesmo não sendo a tulipa, foi escolhida com todo carinho do mundo. 💖
+    </div>
+
+</div>
+
+<button onclick="mudarPagina('pagina6.html')">
+    Continuar 💌
+</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add("mostrar");
+
+    for (let i = 0; i < 20; i++) {
+        let petala = document.createElement("div");
+        petala.classList.add("petala");
+        petala.innerHTML = "🌸";
+        petala.style.left = Math.random() * 100 + "vw";
+        petala.style.animationDuration = (6 + Math.random() * 6) + "s";
+        document.body.appendChild(petala);
+    }
+});
+
+function mudarPagina(url) {
+    document.body.style.opacity = "0";
+    setTimeout(function() {
+        window.location.href = url;
+    }, 800);
+}
+</script>
 
 </body>
 </html>
