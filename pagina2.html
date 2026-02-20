@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffd6e7; /* mesmo rosa claro */
+            background: linear-gradient(180deg, #ffd6e7, #ffc0da);
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -16,64 +16,122 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            overflow: hidden;
 
             opacity: 0;
-            transition: opacity 0.8s ease;
+            transition: opacity 1s ease;
         }
 
         body.mostrar {
             opacity: 1;
         }
 
-        .texto {
-            margin-top: 120px;
-            max-width: 800px;
-            font-size: 22px;
-            color: #ff1493;
+        .container {
+            margin-top: 110px;
+            max-width: 850px;
             padding: 20px;
+            animation: aparecer 1.5s ease forwards;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #ff1493;
+            margin-bottom: 30px;
+        }
+
+        .texto {
+            font-size: 22px;
+            color: #c71585;
+            line-height: 1.6;
+        }
+
+        @keyframes aparecer {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         button {
-            margin-bottom: 60px;
-            padding: 15px 40px;
-            font-size: 20px;
+            margin-bottom: 80px;
+            padding: 18px 50px;
+            font-size: 22px;
             border: none;
-            border-radius: 12px;
+            border-radius: 15px;
             background-color: #ff69b4;
             color: white;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         button:hover {
             background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        /* Corações mais discretos */
+        .coracao {
+            position: absolute;
+            font-size: 18px;
+            animation: subir 8s linear infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes subir {
+            from {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="texto">
-        Este site será diferente dos que já fiz, na verdade, será a minha 
-        expedição de como eu pedi você em namoro, como foi todo o processo.
+    <div class="container">
+        <h1>Minha Expedição 💖</h1>
+
+        <div class="texto">
+            Este site será diferente dos que já fiz.  
+            Na verdade, será a minha expedição de como eu pedi você em namoro,  
+            como foi todo o processo 💌
+        </div>
     </div>
 
     <button onclick="mudarPagina('pagina3.html')">
-        Continuar
+        Continuar 🌸
     </button>
 
     <script>
-        // Fade in
         document.addEventListener("DOMContentLoaded", function() {
             document.body.classList.add("mostrar");
+
+            // Corações mais suaves
+            for (let i = 0; i < 12; i++) {
+                let coracao = document.createElement("div");
+                coracao.classList.add("coracao");
+                coracao.innerHTML = "💗";
+                coracao.style.left = Math.random() * 100 + "vw";
+                coracao.style.animationDuration = (6 + Math.random() * 4) + "s";
+                coracao.style.fontSize = (16 + Math.random() * 14) + "px";
+                document.body.appendChild(coracao);
+            }
         });
 
-        // Fade out
         function mudarPagina(url) {
             document.body.style.opacity = "0";
             setTimeout(function() {
                 window.location.href = url;
-            }, 800);
+            }, 1000);
         }
     </script>
 
