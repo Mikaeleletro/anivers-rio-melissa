@@ -1,119 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Dia 22</title>
+<meta charset="UTF-8">
+<title>Dia 22</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffd6e7;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Georgia', serif;
+        background: radial-gradient(circle at center, #ffd6e7 0%, #f7a8c4 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
 
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
 
-        body.mostrar {
-            opacity: 1;
-        }
+    body.mostrar {
+        opacity: 1;
+    }
 
-        .container {
-            margin-top: 60px;
-            max-width: 850px;
-            padding: 20px;
-        }
+    /* ❤️ Coração fixo no topo esquerdo */
+    .canto-coracao {
+        position: fixed;
+        top: 20px;
+        left: 25px;
+        font-size: 28px;
+        color: #ff1493;
+        animation: pulsar 2s infinite;
+        z-index: 3;
+    }
 
-        .titulo-destaque {
-            font-size: 52px;
-            font-weight: bold;
-            color: #ff1493;
-            margin-bottom: 30px;
-        }
+    @keyframes pulsar {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
 
-        .texto {
-            font-size: 20px;
-            color: #c71585;
-            line-height: 1.8;
-        }
+    /* Moldura romântica */
+    .moldura {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow: inset 0 0 120px rgba(0,0,0,0.35);
+        pointer-events: none;
+        z-index: 1;
+    }
 
-        button {
-            margin-bottom: 60px;
-            padding: 15px 40px;
-            font-size: 20px;
-            border: none;
-            border-radius: 12px;
-            background-color: #ff69b4;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    /* Papel antigo */
+    .container {
+        position: relative;
+        margin-top: 40px;
+        max-width: 850px;
+        padding: 50px;
+        background: #f5deb3;
+        border-radius: 6px;
 
-        button:hover {
-            background-color: #ff1493;
-        }
-    </style>
+        /* textura amarelada */
+        background: linear-gradient(135deg, #f5deb3 0%, #edd19c 100%);
+
+        /* sombra externa */
+        box-shadow: 
+            0 20px 40px rgba(0,0,0,0.3),
+            inset 0 0 40px rgba(0,0,0,0.2);
+
+        z-index: 2;
+    }
+
+    /* Cantos levemente queimados */
+    .container::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: radial-gradient(circle at top left, rgba(80,40,0,0.6) 0%, transparent 60%),
+                    radial-gradient(circle at top right, rgba(80,40,0,0.6) 0%, transparent 60%),
+                    radial-gradient(circle at bottom left, rgba(80,40,0,0.6) 0%, transparent 60%),
+                    radial-gradient(circle at bottom right, rgba(80,40,0,0.6) 0%, transparent 60%);
+        border-radius: 10px;
+        z-index: -1;
+    }
+
+    .titulo-destaque {
+        font-size: 48px;
+        font-weight: bold;
+        color: #8b0000;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .texto {
+        font-size: 19px;
+        color: #4b2e05;
+        line-height: 1.9;
+        text-align: justify;
+    }
+
+    button {
+        margin-bottom: 40px;
+        padding: 15px 40px;
+        font-size: 20px;
+        border: none;
+        border-radius: 25px;
+        background-color: #8b0000;
+        color: white;
+        cursor: pointer;
+        transition: 0.4s;
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        z-index: 2;
+    }
+
+    button:hover {
+        background-color: #5a0000;
+        transform: scale(1.05);
+    }
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="canto-coracao">❤️</div>
 
-        <div class="titulo-destaque">
-            Dia 22 (1 dia antes)
-        </div>
+<div class="moldura"></div>
 
-        <div class="texto">
-            Acordei com o coração acelerado, como se ele soubesse que algo muito importante estava prestes a acontecer. 
-            Passei o dia inteiro inquieto, tentando agir normalmente, mas por dentro eu estava em contagem regressiva. 
-            Revisei mil vezes as alianças, abri a caixinha só para confirmar que elas ainda estavam lá, tão lindas quanto no dia em que comprei.
+<div class="container">
 
-            <br><br>
-
-            Ensaiava minhas palavras no espelho, depois achava simples demais. 
-            Tentava algo mais elaborado, depois achava exagerado. 
-            No fim, percebi que não precisava de um discurso perfeito — só precisava falar com o coração. 
-            Porque tudo que envolve você é verdadeiro.
-
-            <br><br>
-
-            Também pensei novamente no momento em que pediria a bênção ao Sr. Almir. 
-            Confesso que fiquei nervoso só de imaginar, mas era um nervosismo bonito, daqueles que a gente sente quando sabe que está fazendo algo sério, algo que vale a pena. 
-            Eu queria fazer tudo certo. Por você. Por nós.
-
-            <br><br>
-
-            Naquela noite, quase não consegui dormir outra vez. 
-            Não por medo, mas por expectativa. 
-            Ficava imaginando seu sorriso, sua reação, o brilho nos seus olhos. 
-            Imaginava segurando sua mão, olhando nos seus olhos e dizendo que, entre todas as escolhas que eu poderia fazer na vida, escolher você seria sempre a minha favorita.
-        </div>
-
+    <div class="titulo-destaque">
+        Dia 22 (1 dia antes)
     </div>
 
-    <button onclick="mudarPagina('pagina7.html')">
-        Continuar
-    </button>
+    <div class="texto">
+        Acordei com o coração acelerado, como se ele soubesse que algo muito importante estava prestes a acontecer. 
+        Passei o dia inteiro inquieto, tentando agir normalmente, mas por dentro eu estava em contagem regressiva. 
+        Revisei mil vezes as alianças, abri a caixinha só para confirmar que elas ainda estavam lá, tão lindas quanto no dia em que comprei.
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add("mostrar");
-        });
+        <br><br>
 
-        function mudarPagina(url) {
-            document.body.style.opacity = "0";
-            setTimeout(function() {
-                window.location.href = url;
-            }, 800);
-        }
-    </script>
+        Ensaiava minhas palavras no espelho, depois achava simples demais. 
+        Tentava algo mais elaborado, depois achava exagerado. 
+        No fim, percebi que não precisava de um discurso perfeito — só precisava falar com o coração. 
+        Porque tudo que envolve você é verdadeiro.
+
+        <br><br>
+
+        Também pensei novamente no momento em que pediria a bênção ao Sr. Almir. 
+        Confesso que fiquei nervoso só de imaginar, mas era um nervosismo bonito, daqueles que a gente sente quando sabe que está fazendo algo sério, algo que vale a pena. 
+        Eu queria fazer tudo certo. Por você. Por nós.
+
+        <br><br>
+
+        Naquela noite, quase não consegui dormir outra vez. 
+        Não por medo, mas por expectativa. 
+        Ficava imaginando seu sorriso, sua reação, o brilho nos seus olhos. 
+        Imaginava segurando sua mão, olhando nos seus olhos e dizendo que, entre todas as escolhas que eu poderia fazer na vida, escolher você seria sempre a minha favorita.
+    </div>
+
+</div>
+
+<button onclick="mudarPagina('pagina7.html')">
+    Continuar
+</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.body.classList.add("mostrar");
+    });
+
+    function mudarPagina(url) {
+        document.body.style.opacity = "0";
+        setTimeout(function() {
+            window.location.href = url;
+        }, 1000);
+    }
+</script>
 
 </body>
 </html>
