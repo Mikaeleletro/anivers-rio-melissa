@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffd6e7;
+            background: radial-gradient(circle at top, #ffe6f0, #ffd6e7);
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -16,9 +16,10 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            overflow: hidden;
 
             opacity: 0;
-            transition: opacity 0.8s ease;
+            transition: opacity 1s ease;
         }
 
         body.mostrar {
@@ -26,27 +27,54 @@
         }
 
         .container {
-            margin-top: 80px;
+            margin-top: 70px;
             max-width: 850px;
             padding: 20px;
         }
 
         .titulo-destaque {
-            font-size: 48px;
+            font-size: 46px;
             font-weight: bold;
             color: #ff1493;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        .linha {
+            width: 120px;
+            height: 3px;
+            background-color: #ff69b4;
+            margin: 15px auto 30px auto;
+            border-radius: 10px;
+        }
+
+        .icone {
+            font-size: 35px;
+            margin-bottom: 20px;
+            animation: girar 6s linear infinite;
+        }
+
+        @keyframes girar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .texto {
             font-size: 20px;
             color: #c71585;
-            line-height: 1.6;
+            line-height: 1.7;
+            min-height: 200px;
         }
 
         button {
             margin-bottom: 60px;
-            padding: 15px 40px;
+            padding: 15px 45px;
             font-size: 20px;
             border: none;
             border-radius: 12px;
@@ -54,10 +82,12 @@
             color: white;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
         }
 
         button:hover {
             background-color: #ff1493;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -67,35 +97,49 @@
     <div class="container">
 
         <div class="titulo-destaque">
-            17 de fevereiro (6 dias antes)
+            17 de fevereiro (6 dias antes) 💗
         </div>
 
-        <div class="texto">
-            Estou planejando como será o pedido. Comprei um par de alianças, são muito lindas, eu adorei. 
-            Fiquei olhando para elas por alguns minutos, imaginando como vai ser colocar na sua mão. 
-            Ainda estou pensando na melhor forma de pedir, porque quero que seja simples, mas especial. 
-            Também estava planejando como irei pedir a bênção do Sr. Almir. 
-            Como o encontro seria numa sexta-feira, seria difícil encontrar ele antes para conversar pessoalmente. 
-            E eu realmente não queria pedir online. Então decidi que vou pedir a ele na hora em que eu for te buscar na sua casa. 
-            Confesso que isso me deixa um pouco nervoso, mas é um nervosismo bom.
-        </div>
+        <div class="linha"></div>
+
+        <div class="icone">💍</div>
+
+        <div class="texto" id="textoDigitando"></div>
 
     </div>
 
     <button onclick="mudarPagina('pagina4.html')">
-        Continuar
+        Continuar 💌
     </button>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.body.classList.add("mostrar");
+            digitarTexto();
         });
+
+        const texto = `Estou planejando como será o pedido. Comprei um par de alianças, são muito lindas, eu adorei. 
+Fiquei olhando para elas por alguns minutos, imaginando como vai ser colocar na sua mão. 
+Ainda estou pensando na melhor forma de pedir, porque quero que seja simples, mas especial. 
+Também estava planejando como irei pedir a bênção do Sr. Almir. 
+Como o encontro seria numa sexta-feira, seria difícil encontrar ele antes para conversar pessoalmente. 
+E eu realmente não queria pedir online. Então decidi que vou pedir a ele na hora em que eu for te buscar na sua casa. 
+Confesso que isso me deixa um pouco nervoso, mas é um nervosismo bom.`;
+
+        let i = 0;
+        function digitarTexto() {
+            if (i < texto.length) {
+                document.getElementById("textoDigitando").innerHTML += texto.charAt(i);
+                i++;
+                setTimeout(digitarTexto, 20);
+            }
+        }
 
         function mudarPagina(url) {
             document.body.style.opacity = "0";
             setTimeout(function() {
                 window.location.href = url;
-            }, 800);
+            }, 1000);
         }
     </script>
 
