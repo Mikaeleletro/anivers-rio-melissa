@@ -2,21 +2,26 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expedição do Pedido</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
             background: linear-gradient(180deg, #ffd6e7, #ffc0da);
             font-family: Arial, sans-serif;
+
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-            height: 100vh;
+
+            min-height: 100vh;
             text-align: center;
-            overflow: hidden;
 
             opacity: 0;
             transition: opacity 1s ease;
@@ -27,22 +32,23 @@
         }
 
         .container {
-            margin-top: 110px;
-            max-width: 850px;
+            margin-top: 100px;
+            width: 90%;
+            max-width: 800px;
             padding: 20px;
             animation: aparecer 1.5s ease forwards;
         }
 
         h1 {
-            font-size: 40px;
+            font-size: clamp(28px, 5vw, 42px);
             color: #ff1493;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .texto {
-            font-size: 22px;
+            font-size: clamp(18px, 4vw, 22px);
             color: #c71585;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         @keyframes aparecer {
@@ -56,10 +62,15 @@
             }
         }
 
+        /* Área fixa do botão */
+        .botao-area {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
         button {
-            margin-bottom: 80px;
-            padding: 18px 50px;
-            font-size: 22px;
+            padding: 16px 45px;
+            font-size: clamp(18px, 4vw, 22px);
             border: none;
             border-radius: 15px;
             background-color: #ff69b4;
@@ -74,24 +85,38 @@
             transform: scale(1.05);
         }
 
-        /* Corações mais discretos */
+        /* Corações suaves */
         .coracao {
-            position: absolute;
+            position: fixed;
+            bottom: -20px;
             font-size: 18px;
             animation: subir 8s linear infinite;
             opacity: 0.4;
+            pointer-events: none;
         }
 
         @keyframes subir {
             from {
-                transform: translateY(100vh);
+                transform: translateY(0);
                 opacity: 0;
             }
             to {
-                transform: translateY(-10vh);
+                transform: translateY(-110vh);
                 opacity: 1;
             }
         }
+
+        /* Melhor ajuste no celular */
+        @media (max-width: 600px) {
+            .container {
+                margin-top: 70px;
+            }
+
+            .botao-area {
+                margin-top: 40px;
+            }
+        }
+
     </style>
 </head>
 
@@ -101,21 +126,22 @@
         <h1>Minha Expedição 💖</h1>
 
         <div class="texto">
-            Este site será diferente dos que já fiz.  
-            Na verdade, será a minha expedição de como eu pedi você em namoro,  
+            Este site será diferente dos que já fiz.<br><br>
+            Na verdade, será a minha expedição de como eu pedi você em namoro,
             como foi todo o processo 💌
         </div>
     </div>
 
-    <button onclick="mudarPagina('pagina3.html')">
-        Continuar 🌸
-    </button>
+    <div class="botao-area">
+        <button onclick="mudarPagina('pagina3.html')">
+            Continuar 🌸
+        </button>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.body.classList.add("mostrar");
 
-            // Corações mais suaves
             for (let i = 0; i < 12; i++) {
                 let coracao = document.createElement("div");
                 coracao.classList.add("coracao");
