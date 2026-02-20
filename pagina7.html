@@ -1,122 +1,63 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Final</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffd6e7;
+        font-family: Arial, sans-serif;
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffd6e7;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
+        min-height: 100vh; /* mudou aqui */
+        text-align: center;
 
-        body.mostrar {
-            opacity: 1;
-        }
+        opacity: 0;
+        transition: opacity 0.8s ease;
+    }
 
-        .container {
-            margin-top: 60px;
-            max-width: 850px;
-            padding: 20px;
-        }
+    body.mostrar {
+        opacity: 1;
+    }
 
-        .titulo {
-            font-size: 48px;
-            font-weight: bold;
-            color: #ff1493;
-            margin-bottom: 30px;
-        }
+    .container {
+        margin-top: 60px;
+        max-width: 850px;
+        padding: 20px;
+    }
 
-        .texto {
-            font-size: 20px;
-            color: #c71585;
-            line-height: 1.8;
-        }
+    .titulo {
+        font-size: 48px;
+        font-weight: bold;
+        color: #ff1493;
+        margin-bottom: 30px;
+    }
 
-        button {
-            margin-bottom: 60px;
-            padding: 15px 40px;
-            font-size: 20px;
-            border: none;
-            border-radius: 12px;
-            background-color: #ff69b4;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .texto {
+        font-size: 20px;
+        color: #c71585;
+        line-height: 1.8;
+    }
 
-        button:hover {
-            background-color: #ff1493;
-        }
-    </style>
-</head>
+    /* BOTÃO FIXO CENTRALIZADO */
+    button {
+        position: fixed;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
 
-<body>
+        padding: 15px 40px;
+        font-size: 20px;
+        border: none;
+        border-radius: 12px;
+        background-color: #ff69b4;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-    <div class="container">
-
-        <div class="titulo">
-            Fim... 💗
-        </div>
-
-        <div class="texto">
-            Bom, finalizo aqui.  
-            Espero que cê tenha gostado, não só do site que deu <strong>muuuuito trabalho (2 dias de trabalho)</strong>.  
-
-            <br><br>
-
-            Tipo assim, o site está bem simples, mas você não sabe o trabalho que dá para fazer tudo.  
-            É muito código... mas valeu a pena.
-
-            <br><br>
-
-            Espero que tudo ocorra do jeito que eu imagino.  
-            Tudo isso foi feito com muito amor e dedicação por mim.
-
-            <br><br>
-
-            Espero que tenha aceitado… aliás, espero que aceite.  
-            Imagino que aceite kakakakak.
-
-            <br><br>
-
-            Enfim, eu já deva ter ido embora né, provavelmente.  
-            Te amo demais, e quero passar o resto da minha vida com você.
-
-            <br><br>
-
-            Obrigado por tudo... 💖
-        </div>
-
-    </div>
-
-    <button onclick="mudarPagina('foto.html')">
-        Ver nossa foto 📸
-    </button>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add("mostrar");
-        });
-
-        function mudarPagina(url) {
-            document.body.style.opacity = "0";
-            setTimeout(function() {
-                window.location.href = url;
-            }, 800);
-        }
-    </script>
-
-</body>
-</html>
+    button:hover {
+        background-color: #ff1493;
+        transform: translateX(-50%) scale(1.05);
+    }
+</style>
