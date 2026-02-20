@@ -1,165 +1,106 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expedição do Pedido</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(180deg, #ffd6e7, #ffc0da);
+        font-family: Arial, sans-serif;
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, #ffd6e7, #ffc0da);
-            font-family: Arial, sans-serif;
+        min-height: 100vh; /* mudou aqui */
+        text-align: center;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
 
-            min-height: 100vh;
-            text-align: center;
+    body.mostrar {
+        opacity: 1;
+    }
 
+    .container {
+        margin-top: 80px;
+        max-width: 850px;
+        padding: 20px;
+        animation: aparecer 1.5s ease forwards;
+    }
+
+    h1 {
+        font-size: 35px;
+        color: #ff1493;
+        margin-bottom: 30px;
+    }
+
+    .texto {
+        font-size: 20px;
+        color: #c71585;
+        line-height: 1.6;
+    }
+
+    @keyframes aparecer {
+        from {
+            transform: translateY(30px);
             opacity: 0;
-            transition: opacity 1s ease;
         }
-
-        body.mostrar {
+        to {
+            transform: translateY(0);
             opacity: 1;
         }
+    }
 
-        .container {
-            margin-top: 100px;
-            width: 90%;
-            max-width: 800px;
-            padding: 20px;
-            animation: aparecer 1.5s ease forwards;
+    button {
+        margin: 60px 0;
+        padding: 18px 50px;
+        font-size: 20px;
+        border: none;
+        border-radius: 15px;
+        background-color: #ff69b4;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+        background-color: #ff1493;
+        transform: scale(1.05);
+    }
+
+    .coracao {
+        position: fixed; /* mudou para fixed */
+        font-size: 18px;
+        animation: subir 8s linear infinite;
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: -1; /* atrás do conteúdo */
+    }
+
+    @keyframes subir {
+        from {
+            transform: translateY(100vh);
+            opacity: 0;
         }
+        to {
+            transform: translateY(-10vh);
+            opacity: 1;
+        }
+    }
 
+    /* Ajuste para celular */
+    @media (max-width: 600px) {
         h1 {
-            font-size: clamp(28px, 5vw, 42px);
-            color: #ff1493;
-            margin-bottom: 25px;
+            font-size: 28px;
         }
 
         .texto {
-            font-size: clamp(18px, 4vw, 22px);
-            color: #c71585;
-            line-height: 1.7;
-        }
-
-        @keyframes aparecer {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Área fixa do botão */
-        .botao-area {
-            margin-top: 60px;
-            margin-bottom: 60px;
+            font-size: 18px;
         }
 
         button {
-            padding: 16px 45px;
-            font-size: clamp(18px, 4vw, 22px);
-            border: none;
-            border-radius: 15px;
-            background-color: #ff69b4;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        button:hover {
-            background-color: #ff1493;
-            transform: scale(1.05);
-        }
-
-        /* Corações suaves */
-        .coracao {
-            position: fixed;
-            bottom: -20px;
+            width: 80%;
             font-size: 18px;
-            animation: subir 8s linear infinite;
-            opacity: 0.4;
-            pointer-events: none;
         }
-
-        @keyframes subir {
-            from {
-                transform: translateY(0);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(-110vh);
-                opacity: 1;
-            }
-        }
-
-        /* Melhor ajuste no celular */
-        @media (max-width: 600px) {
-            .container {
-                margin-top: 70px;
-            }
-
-            .botao-area {
-                margin-top: 40px;
-            }
-        }
-
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-        <h1>Minha Expedição 💖</h1>
-
-        <div class="texto">
-            Este site será diferente dos que já fiz.<br><br>
-            Na verdade, será a minha expedição de como eu pedi você em namoro,
-            como foi todo o processo 💌
-        </div>
-    </div>
-
-    <div class="botao-area">
-        <button onclick="mudarPagina('pagina3.html')">
-            Continuar 🌸
-        </button>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add("mostrar");
-
-            for (let i = 0; i < 12; i++) {
-                let coracao = document.createElement("div");
-                coracao.classList.add("coracao");
-                coracao.innerHTML = "💗";
-                coracao.style.left = Math.random() * 100 + "vw";
-                coracao.style.animationDuration = (6 + Math.random() * 4) + "s";
-                coracao.style.fontSize = (16 + Math.random() * 14) + "px";
-                document.body.appendChild(coracao);
-            }
-        });
-
-        function mudarPagina(url) {
-            document.body.style.opacity = "0";
-            setTimeout(function() {
-                window.location.href = url;
-            }, 1000);
-        }
-    </script>
-
-</body>
-</html>
+    }
+</style>
