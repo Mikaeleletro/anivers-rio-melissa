@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>19 de Fevereiro</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffd6e7;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        body.mostrar {
+            opacity: 1;
+        }
+
+        .container {
+            margin-top: 70px;
+            max-width: 850px;
+            padding: 20px;
+        }
+
+        .titulo-destaque {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ff1493;
+            margin-bottom: 30px;
+        }
+
+        .texto {
+            font-size: 20px;
+            color: #c71585;
+            line-height: 1.7;
+        }
+
+        button {
+            margin-bottom: 60px;
+            padding: 15px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="titulo-destaque">
+            19 de fevereiro (4 dias antes)
+        </div>
+
+        <div class="texto">
+            Mudamos a data, achamos que seria melhor. O Sr. Almir não gostou muito da data que tínhamos pensado antes, então decidimos ajustar. 
+            No fundo, quero que tudo aconteça da melhor forma possível, sem pressa e do jeito certo. 
+            Agora são 23:21, e eu estava olhando o preço de algumas rosas, porque né… um pedido de namoro não pode faltar uma rosa. 
+            Eu queria uma tulipa, de verdade. Acho mais diferente, mais delicada. Mas a loja não vende, que raiva, odiei. 
+            Mesmo assim, escolhi a rosa. Fiquei pensando em qual seria a mais bonita, qual combinaria mais com o momento. 
+            Pode parecer detalhe pequeno, mas para mim não é. Cada coisinha importa. 
+            Espero que você tenha gostado. Mesmo não sendo a tulipa, foi escolhida com todo carinho do mundo.
+        </div>
+
+    </div>
+
+    <button onclick="mudarPagina('index.html')">
+        Voltar ao Início
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("mostrar");
+        });
+
+        function mudarPagina(url) {
+            document.body.style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = url;
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
