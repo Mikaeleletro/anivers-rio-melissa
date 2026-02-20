@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dia 22</title>
 
 <style>
@@ -10,11 +11,12 @@ body {
     padding: 0;
     font-family: 'Georgia', serif;
     background: radial-gradient(circle at center, #ffd6e7 0%, #f7a8c4 100%);
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+
+    min-height: 100vh;
 
     opacity: 0;
     transition: opacity 1s ease;
@@ -40,11 +42,10 @@ body.mostrar {
     100% { transform: scale(1); }
 }
 
-/* Moldura externa */
+/* Moldura */
 .moldura {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    inset: 0;
     box-shadow: inset 0 0 120px rgba(0,0,0,0.35);
     pointer-events: none;
 }
@@ -52,10 +53,9 @@ body.mostrar {
 /* Papel */
 .container {
     position: relative;
-    width: 90%;
+    width: 92%;
     max-width: 750px;
-    max-height: 75vh;
-    overflow-y: auto;
+    margin-top: 80px;
     padding: 40px;
 
     background: linear-gradient(135deg, #f5deb3 0%, #edd19c 100%);
@@ -70,10 +70,7 @@ body.mostrar {
 .container::before {
     content: "";
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
+    inset: -10px;
     background:
         radial-gradient(circle at top left, rgba(80,40,0,0.6) 0%, transparent 60%),
         radial-gradient(circle at top right, rgba(80,40,0,0.6) 0%, transparent 60%),
@@ -84,7 +81,7 @@ body.mostrar {
 }
 
 .titulo-destaque {
-    font-size: 42px;
+    font-size: 38px;
     font-weight: bold;
     color: #8b0000;
     margin-bottom: 25px;
@@ -92,19 +89,21 @@ body.mostrar {
 }
 
 .texto {
-    font-size: 18px;
+    font-size: 17px;
     color: #4b2e05;
     line-height: 1.9;
     text-align: justify;
     min-height: 200px;
 }
 
-/* Botão */
+/* Botão agora normal no fluxo */
+.botao-area {
+    margin: 50px 0 60px 0;
+}
+
 button {
-    position: fixed;
-    bottom: 30px;
     padding: 14px 35px;
-    font-size: 18px;
+    font-size: 17px;
     border: none;
     border-radius: 25px;
     background-color: #8b0000;
@@ -123,15 +122,18 @@ button:hover {
 @media (max-width: 768px) {
     .container {
         padding: 25px;
-        max-height: 80vh;
     }
 
     .titulo-destaque {
-        font-size: 30px;
+        font-size: 26px;
     }
 
     .texto {
         font-size: 15px;
+    }
+
+    button {
+        width: 85%;
     }
 }
 </style>
@@ -150,9 +152,11 @@ button:hover {
     <div class="texto" id="texto"></div>
 </div>
 
-<button onclick="mudarPagina('pagina7.html')">
-    Continuar
-</button>
+<div class="botao-area">
+    <button onclick="mudarPagina('pagina7.html')">
+        Continuar
+    </button>
+</div>
 
 <audio id="somEscrita" src="escrevendo.mp3" loop></audio>
 
@@ -186,11 +190,12 @@ const som = document.getElementById("somEscrita");
 
 function iniciarDigitacao() {
     som.volume = 0.25;
-    som.play();
+    som.play().catch(()=>{});
 
     function digitar() {
         if (i < mensagem.length) {
-            textoElemento.innerHTML += mensagem.charAt(i) === "\n" ? "<br><br>" : mensagem.charAt(i);
+            textoElemento.innerHTML += 
+                mensagem.charAt(i) === "\n" ? "<br><br>" : mensagem.charAt(i);
             i++;
             setTimeout(digitar, velocidade);
         } else {
@@ -204,7 +209,7 @@ function mudarPagina(url) {
     document.body.style.opacity = "0";
     setTimeout(function() {
         window.location.href = url;
-    }, 1000);
+    }, 800);
 }
 </script>
 
