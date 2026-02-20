@@ -1,155 +1,178 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>18 de Fevereiro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>18 de Fevereiro</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #ffb6d9, #ff69b4, #c71585);
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #ffb6d9, #ff69b4, #c71585);
+    font-family: Arial, sans-serif;
 
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        body.mostrar {
-            opacity: 1;
-        }
+    min-height: 100vh;
+    text-align: center;
 
-        .container {
-            margin-top: 60px;
-            max-width: 850px;
-            padding: 20px;
-            color: white;
-        }
+    opacity: 0;
+    transition: opacity 1s ease;
+}
 
-        .titulo {
-            font-size: 46px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+body.mostrar {
+    opacity: 1;
+}
 
-        .relogio {
-            font-size: 28px;
-            margin-bottom: 25px;
-            animation: piscar 1s infinite alternate;
-        }
+.container {
+    margin-top: 60px;
+    max-width: 850px;
+    padding: 20px;
+    color: white;
+}
 
-        @keyframes piscar {
-            from { opacity: 0.6; }
-            to { opacity: 1; }
-        }
+.titulo {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-        .texto {
-            font-size: 20px;
-            line-height: 1.8;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 1.5s ease;
-        }
+.relogio {
+    font-size: 24px;
+    margin-bottom: 25px;
+    animation: piscar 1s infinite alternate;
+}
 
-        .texto.mostrarTexto {
-            opacity: 1;
-            transform: translateY(0);
-        }
+@keyframes piscar {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
 
-        button {
-            margin-bottom: 60px;
-            padding: 15px 40px;
-            font-size: 20px;
-            border: none;
-            border-radius: 12px;
-            background-color: white;
-            color: #c71585;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-        }
+.texto {
+    font-size: 19px;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1.5s ease;
+    padding: 0 10px;
+}
 
-        button:hover {
-            transform: scale(1.05);
-        }
+.texto.mostrarTexto {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        /* Estrelas */
-        .estrela {
-            position: absolute;
-            color: white;
-            font-size: 14px;
-            animation: brilho 2s infinite alternate;
-        }
+button {
+    margin: 50px 0;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    color: #c71585;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
 
-        @keyframes brilho {
-            from { opacity: 0.2; }
-            to { opacity: 1; }
-        }
+button:hover {
+    transform: scale(1.05);
+}
 
-    </style>
+/* Estrelas atrás do conteúdo */
+.estrela {
+    position: fixed;
+    color: white;
+    font-size: 14px;
+    animation: brilho 2s infinite alternate;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes brilho {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .titulo {
+        font-size: 26px;
+    }
+
+    .relogio {
+        font-size: 18px;
+    }
+
+    .texto {
+        font-size: 16px;
+    }
+
+    button {
+        width: 80%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="titulo">
-            18 de fevereiro 🌙
-        </div>
-
-        <div class="relogio">
-            ⏰ 02:00 da manhã...
-        </div>
-
-        <div class="texto" id="texto">
-            Não sei se você lembra, quando me despedi de você no dia 18 pelo WhatsApp, quando eu disse que ia dormir, era mais ou menos 00:00 e pouco. 
-            Mas a verdade é que eu fui dormir mesmo só lá pras 02:00 da manhã. Eu simplesmente não conseguia. 
-            Eu só pensava no pedido. Pensava na minha fala, repetia as palavras na cabeça várias vezes, imaginando se ia sair do jeito que eu queria. 
-            Pensava em você, no seu sorriso, na sua reação. Pensava também no momento de pedir a bênção ao Sr. Almir, imaginando como seria a conversa. 
-            E não era só sobre o dia do pedido… eu ficava pensando no depois. 
-            Pensava em nós daqui muitos anos, sei lá, talvez daqui 10 anos. 
-            Eu gosto de pensar no futuro. E gosto ainda mais quando, em todos esses pensamentos, você está nele comigo. 💫
-        </div>
+<div class="container">
+    <div class="titulo">
+        18 de fevereiro 🌙
     </div>
 
-    <button onclick="mudarPagina('pagina5.html')">
-        Continuar ✨
-    </button>
+    <div class="relogio">
+        ⏰ 02:00 da manhã...
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add("mostrar");
+    <div class="texto" id="texto">
+        Não sei se você lembra, quando me despedi de você no dia 18 pelo WhatsApp, quando eu disse que ia dormir, era mais ou menos 00:00 e pouco. 
+        Mas a verdade é que eu fui dormir mesmo só lá pras 02:00 da manhã. Eu simplesmente não conseguia. 
+        Eu só pensava no pedido. Pensava na minha fala, repetia as palavras na cabeça várias vezes, imaginando se ia sair do jeito que eu queria. 
+        Pensava em você, no seu sorriso, na sua reação. Pensava também no momento de pedir a bênção ao Sr. Almir, imaginando como seria a conversa. 
+        E não era só sobre o dia do pedido… eu ficava pensando no depois. 
+        Pensava em nós daqui muitos anos, sei lá, talvez daqui 10 anos. 
+        Eu gosto de pensar no futuro. E gosto ainda mais quando, em todos esses pensamentos, você está nele comigo. 💫
+    </div>
+</div>
 
-            // Mostrar texto suavemente
-            setTimeout(() => {
-                document.getElementById("texto").classList.add("mostrarTexto");
-            }, 800);
+<button onclick="mudarPagina('pagina5.html')">
+    Continuar ✨
+</button>
 
-            // Criar estrelas aleatórias
-            for (let i = 0; i < 40; i++) {
-                let estrela = document.createElement("div");
-                estrela.classList.add("estrela");
-                estrela.innerHTML = "✦";
-                estrela.style.left = Math.random() * 100 + "vw";
-                estrela.style.top = Math.random() * 100 + "vh";
-                estrela.style.animationDuration = (1 + Math.random() * 3) + "s";
-                document.body.appendChild(estrela);
-            }
-        });
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add("mostrar");
 
-        function mudarPagina(url) {
-            document.body.style.opacity = "0";
-            setTimeout(function() {
-                window.location.href = url;
-            }, 1000);
-        }
-    </script>
+    // Mostrar texto suavemente
+    setTimeout(() => {
+        document.getElementById("texto").classList.add("mostrarTexto");
+    }, 800);
+
+    // Criar estrelas
+    for (let i = 0; i < 35; i++) {
+        let estrela = document.createElement("div");
+        estrela.classList.add("estrela");
+        estrela.innerHTML = "✦";
+        estrela.style.left = Math.random() * 100 + "vw";
+        estrela.style.top = Math.random() * 100 + "vh";
+        estrela.style.animationDuration = (1 + Math.random() * 3) + "s";
+        document.body.appendChild(estrela);
+    }
+});
+
+function mudarPagina(url) {
+    document.body.style.opacity = "0";
+    setTimeout(function() {
+        window.location.href = url;
+    }, 800);
+}
+</script>
 
 </body>
 </html>
