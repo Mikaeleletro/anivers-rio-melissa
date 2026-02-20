@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffd6e7;
+            background: linear-gradient(180deg, #ffd6e7, #ffb6d9);
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -16,9 +16,10 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            overflow: hidden;
 
             opacity: 0;
-            transition: opacity 0.8s ease;
+            transition: opacity 1s ease;
         }
 
         body.mostrar {
@@ -26,22 +27,60 @@
         }
 
         .container {
-            margin-top: 70px;
+            margin-top: 60px;
             max-width: 850px;
             padding: 20px;
+            position: relative;
+            z-index: 2;
         }
 
-        .titulo-destaque {
-            font-size: 48px;
+        .titulo {
+            font-size: 46px;
             font-weight: bold;
             color: #ff1493;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+        }
+
+        .hora {
+            font-size: 22px;
+            font-family: monospace;
+            background-color: white;
+            color: #c71585;
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 10px rgba(255,20,147,0.4);
+        }
+
+        .rosa-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            animation: flutuar 3s ease-in-out infinite;
+        }
+
+        @keyframes flutuar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         .texto {
             font-size: 20px;
             color: #c71585;
-            line-height: 1.7;
+            line-height: 1.8;
+            animation: aparecer 1.5s ease forwards;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tulipa {
+            color: #ff69b4;
+            font-style: italic;
+            font-weight: bold;
         }
 
         button {
@@ -50,15 +89,32 @@
             font-size: 20px;
             border: none;
             border-radius: 12px;
-            background-color: #ff69b4;
+            background-color: #ff1493;
             color: white;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         button:hover {
-            background-color: #ff1493;
+            transform: scale(1.05);
         }
+
+        /* Pétalas */
+        .petala {
+            position: absolute;
+            top: -10px;
+            font-size: 18px;
+            animation: cair linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes cair {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
     </style>
 </head>
 
@@ -66,36 +122,65 @@
 
     <div class="container">
 
-        <div class="titulo-destaque">
-            19 de fevereiro (4 dias antes)
+        <div class="titulo">
+            19 de fevereiro 🌹
         </div>
 
+        <div class="hora">
+            23:21
+        </div>
+
+        <div class="rosa-icon">🌹</div>
+
         <div class="texto">
-            Mudamos a data, achamos que seria melhor. O Sr. Almir não gostou muito da data que tínhamos pensado antes, então decidimos ajustar. 
-            No fundo, quero que tudo aconteça da melhor forma possível, sem pressa e do jeito certo. 
-            Agora são 23:21, e eu estava olhando o preço de algumas rosas, porque né… um pedido de namoro não pode faltar uma rosa. 
-            Eu queria uma tulipa, de verdade. Acho mais diferente, mais delicada. Mas a loja não vende, que raiva, odiei. 
-            Mesmo assim, escolhi a rosa. Fiquei pensando em qual seria a mais bonita, qual combinaria mais com o momento. 
-            Pode parecer detalhe pequeno, mas para mim não é. Cada coisinha importa. 
-            Espero que você tenha gostado. Mesmo não sendo a tulipa, foi escolhida com todo carinho do mundo.
+            Mudamos a data, achamos que seria melhor. O Sr. Almir não gostou muito da data que tínhamos pensado antes, então decidimos ajustar.  
+            No fundo, quero que tudo aconteça da melhor forma possível, sem pressa e do jeito certo.  
+
+            <br><br>
+
+            Agora são 23:21, e eu estava olhando o preço de algumas rosas, porque né… um pedido de namoro não pode faltar uma rosa.  
+
+            <br><br>
+
+            Eu queria uma <span class="tulipa">tulipa</span>, de verdade. Acho mais diferente, mais delicada.  
+            Mas a loja não vende, que raiva, odiei.  
+
+            <br><br>
+
+            Mesmo assim, escolhi a rosa. Fiquei pensando em qual seria a mais bonita, qual combinaria mais com o momento.  
+            Pode parecer detalhe pequeno, mas para mim não é. Cada coisinha importa.  
+
+            <br><br>
+
+            Espero que você tenha gostado. Mesmo não sendo a tulipa, foi escolhida com todo carinho do mundo. 💖
         </div>
 
     </div>
 
     <button onclick="mudarPagina('pagina6.html')">
-        Continuar
+        Continuar 💌
     </button>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.body.classList.add("mostrar");
+
+            // Criar pétalas caindo
+            for (let i = 0; i < 25; i++) {
+                let petala = document.createElement("div");
+                petala.classList.add("petala");
+                petala.innerHTML = "🌸";
+                petala.style.left = Math.random() * 100 + "vw";
+                petala.style.animationDuration = (5 + Math.random() * 5) + "s";
+                document.body.appendChild(petala);
+            }
         });
 
         function mudarPagina(url) {
             document.body.style.opacity = "0";
             setTimeout(function() {
                 window.location.href = url;
-            }, 800);
+            }, 1000);
         }
     </script>
 
