@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Expedição do Pedido</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffd6e7; /* mesmo rosa claro */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        body.mostrar {
+            opacity: 1;
+        }
+
+        .texto {
+            margin-top: 120px;
+            max-width: 800px;
+            font-size: 22px;
+            color: #ff1493;
+            padding: 20px;
+        }
+
+        button {
+            margin-bottom: 60px;
+            padding: 15px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="texto">
+        Este site será diferente dos que já fiz, na verdade, será a minha 
+        expedição de como eu pedi você em namoro, como foi todo o processo.
+    </div>
+
+    <button onclick="mudarPagina('pagina3.html')">
+        Continuar
+    </button>
+
+    <script>
+        // Fade in
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("mostrar");
+        });
+
+        // Fade out
+        function mudarPagina(url) {
+            document.body.style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = url;
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
