@@ -5,113 +5,135 @@
 <title>Dia 22</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Georgia', serif;
-        background: radial-gradient(circle at center, #ffd6e7 0%, #f7a8c4 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
-        overflow: hidden;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background: radial-gradient(circle at center, #ffd6e7 0%, #f7a8c4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 
-        opacity: 0;
-        transition: opacity 1s ease;
-    }
+    opacity: 0;
+    transition: opacity 1s ease;
+}
 
-    body.mostrar {
-        opacity: 1;
-    }
+body.mostrar {
+    opacity: 1;
+}
 
-    .canto-coracao {
-        position: fixed;
-        top: 20px;
-        left: 25px;
-        font-size: 28px;
-        color: #ff1493;
-        animation: pulsar 2s infinite;
-        z-index: 3;
-    }
+/* ❤️ canto */
+.canto-coracao {
+    position: fixed;
+    top: 20px;
+    left: 25px;
+    font-size: 26px;
+    animation: pulsar 2s infinite;
+    z-index: 3;
+}
 
-    @keyframes pulsar {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
 
-    .moldura {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        box-shadow: inset 0 0 120px rgba(0,0,0,0.35);
-        pointer-events: none;
-        z-index: 1;
-    }
+/* Moldura externa */
+.moldura {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 120px rgba(0,0,0,0.35);
+    pointer-events: none;
+}
 
+/* Papel */
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 750px;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding: 40px;
+
+    background: linear-gradient(135deg, #f5deb3 0%, #edd19c 100%);
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.3),
+        inset 0 0 40px rgba(0,0,0,0.2);
+}
+
+/* Cantos queimados */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background:
+        radial-gradient(circle at top left, rgba(80,40,0,0.6) 0%, transparent 60%),
+        radial-gradient(circle at top right, rgba(80,40,0,0.6) 0%, transparent 60%),
+        radial-gradient(circle at bottom left, rgba(80,40,0,0.6) 0%, transparent 60%),
+        radial-gradient(circle at bottom right, rgba(80,40,0,0.6) 0%, transparent 60%);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.titulo-destaque {
+    font-size: 42px;
+    font-weight: bold;
+    color: #8b0000;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.texto {
+    font-size: 18px;
+    color: #4b2e05;
+    line-height: 1.9;
+    text-align: justify;
+    min-height: 200px;
+}
+
+/* Botão */
+button {
+    position: fixed;
+    bottom: 30px;
+    padding: 14px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    background-color: #8b0000;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+button:hover {
+    background-color: #5a0000;
+    transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
     .container {
-        position: relative;
-        margin-top: 40px;
-        max-width: 850px;
-        padding: 50px;
-        background: linear-gradient(135deg, #f5deb3 0%, #edd19c 100%);
-        border-radius: 6px;
-        box-shadow:
-            0 20px 40px rgba(0,0,0,0.3),
-            inset 0 0 40px rgba(0,0,0,0.2);
-        z-index: 2;
-    }
-
-    .container::before {
-        content: "";
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        right: -10px;
-        bottom: -10px;
-        background: radial-gradient(circle at top left, rgba(80,40,0,0.6) 0%, transparent 60%),
-                    radial-gradient(circle at top right, rgba(80,40,0,0.6) 0%, transparent 60%),
-                    radial-gradient(circle at bottom left, rgba(80,40,0,0.6) 0%, transparent 60%),
-                    radial-gradient(circle at bottom right, rgba(80,40,0,0.6) 0%, transparent 60%);
-        border-radius: 10px;
-        z-index: -1;
+        padding: 25px;
+        max-height: 80vh;
     }
 
     .titulo-destaque {
-        font-size: 48px;
-        font-weight: bold;
-        color: #8b0000;
-        margin-bottom: 30px;
+        font-size: 30px;
     }
 
     .texto {
-        font-size: 19px;
-        color: #4b2e05;
-        line-height: 1.9;
-        text-align: justify;
-        min-height: 300px;
+        font-size: 15px;
     }
-
-    button {
-        margin-bottom: 40px;
-        padding: 15px 40px;
-        font-size: 20px;
-        border: none;
-        border-radius: 25px;
-        background-color: #8b0000;
-        color: white;
-        cursor: pointer;
-        transition: 0.4s;
-        box-shadow: 0 0 15px rgba(0,0,0,0.4);
-        z-index: 2;
-    }
-
-    button:hover {
-        background-color: #5a0000;
-        transform: scale(1.05);
-    }
+}
 </style>
 </head>
 
@@ -132,57 +154,58 @@
     Continuar
 </button>
 
-<!-- Áudio da escrita -->
 <audio id="somEscrita" src="escrevendo.mp3" loop></audio>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.body.classList.add("mostrar");
-        iniciarDigitacao();
-    });
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add("mostrar");
+    iniciarDigitacao();
+});
 
-    const mensagem = `Acordei com o coração acelerado, como se ele soubesse que algo muito importante estava prestes a acontecer. 
+const mensagem = `Acordei com o coração acelerado, como se ele soubesse que algo muito importante estava prestes a acontecer. 
 Passei o dia inteiro inquieto, tentando agir normalmente, mas por dentro eu estava em contagem regressiva. 
 Revisei mil vezes as alianças, abri a caixinha só para confirmar que elas ainda estavam lá, tão lindas quanto no dia em que comprei.
+
 Ensaiava minhas palavras no espelho, depois achava simples demais. 
 Tentava algo mais elaborado, depois achava exagerado. 
 No fim, percebi que não precisava de um discurso perfeito — só precisava falar com o coração. 
 Porque tudo que envolve você é verdadeiro.
+
 Também pensei novamente no momento em que pediria a bênção ao Sr. Almir. 
 Confesso que fiquei nervoso só de imaginar, mas era um nervosismo bonito. 
 Eu queria fazer tudo certo. Por você. Por nós.
+
 Naquela noite, quase não consegui dormir outra vez. 
 Não por medo, mas por expectativa. 
 Imaginava segurando sua mão e dizendo que escolher você seria sempre a minha favorita.`;
 
-    let i = 0;
-    const velocidade = 8;
-    const textoElemento = document.getElementById("texto");
-    const som = document.getElementById("somEscrita");
+let i = 0;
+const velocidade = 8;
+const textoElemento = document.getElementById("texto");
+const som = document.getElementById("somEscrita");
 
-    function iniciarDigitacao() {
-        som.volume = 0.3;
-        som.play();
+function iniciarDigitacao() {
+    som.volume = 0.25;
+    som.play();
 
-        function digitar() {
-            if (i < mensagem.length) {
-                textoElemento.innerHTML += mensagem.charAt(i) === "\n" ? "<br><br>" : mensagem.charAt(i);
-                i++;
-                setTimeout(digitar, velocidade);
-            } else {
-                som.pause();
-            }
+    function digitar() {
+        if (i < mensagem.length) {
+            textoElemento.innerHTML += mensagem.charAt(i) === "\n" ? "<br><br>" : mensagem.charAt(i);
+            i++;
+            setTimeout(digitar, velocidade);
+        } else {
+            som.pause();
         }
-
-        digitar();
     }
+    digitar();
+}
 
-    function mudarPagina(url) {
-        document.body.style.opacity = "0";
-        setTimeout(function() {
-            window.location.href = url;
-        }, 1000);
-    }
+function mudarPagina(url) {
+    document.body.style.opacity = "0";
+    setTimeout(function() {
+        window.location.href = url;
+    }, 1000);
+}
 </script>
 
 </body>
