@@ -158,7 +158,7 @@ button:hover {
     </button>
 </div>
 
-<audio id="somEscrita" src="escrevendo.mp3" loop></audio>
+<audio id="somEscrita" src="escrevendo.mp3"></audio>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -189,8 +189,12 @@ const textoElemento = document.getElementById("texto");
 const som = document.getElementById("somEscrita");
 
 function iniciarDigitacao() {
-    som.volume = 0.25;
-    som.play().catch(()=>{});
+    som.volume = 0.3;
+
+    // tenta tocar o som
+    som.play().catch(() => {
+        console.log("Autoplay bloqueado");
+    });
 
     function digitar() {
         if (i < mensagem.length) {
@@ -199,9 +203,11 @@ function iniciarDigitacao() {
             i++;
             setTimeout(digitar, velocidade);
         } else {
-            som.pause();
+            som.pause();        // para o som quando termina
+            som.currentTime = 0; // volta pro início
         }
     }
+
     digitar();
 }
 
