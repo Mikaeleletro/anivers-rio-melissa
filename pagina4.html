@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>18 de Fevereiro</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffd6e7;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        body.mostrar {
+            opacity: 1;
+        }
+
+        .container {
+            margin-top: 70px;
+            max-width: 850px;
+            padding: 20px;
+        }
+
+        .titulo-destaque {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ff1493;
+            margin-bottom: 30px;
+        }
+
+        .texto {
+            font-size: 20px;
+            color: #c71585;
+            line-height: 1.7;
+        }
+
+        button {
+            margin-bottom: 60px;
+            padding: 15px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="titulo-destaque">
+            18 de fevereiro (5 dias antes)
+        </div>
+
+        <div class="texto">
+            Não sei se você lembra, quando me despedi de você no dia 18 pelo WhatsApp, quando eu disse que ia dormir, era mais ou menos 00:00 e pouco. 
+            Mas a verdade é que eu fui dormir mesmo só lá pras 02:00 da manhã. Eu simplesmente não conseguia. 
+            Eu só pensava no pedido. Pensava na minha fala, repetia as palavras na cabeça várias vezes, imaginando se ia sair do jeito que eu queria. 
+            Pensava em você, no seu sorriso, na sua reação. Pensava também no momento de pedir a bênção ao Sr. Almir, imaginando como seria a conversa. 
+            E não era só sobre o dia do pedido… eu ficava pensando no depois. 
+            Pensava em nós daqui muitos anos, sei lá, talvez daqui 10 anos. 
+            Eu gosto de pensar no futuro. E gosto ainda mais quando, em todos esses pensamentos, você está nele comigo.
+        </div>
+
+    </div>
+
+    <button onclick="mudarPagina('pagina5.html')">
+        Continuar
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("mostrar");
+        });
+
+        function mudarPagina(url) {
+            document.body.style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = url;
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
