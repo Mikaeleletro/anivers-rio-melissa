@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Nossa Foto</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffd6e7;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.mostrar {
+            opacity: 1;
+        }
+
+        .foto-container {
+            animation: zoomSuave 6s infinite alternate ease-in-out;
+        }
+
+        img {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .frase {
+            margin-top: 30px;
+            font-size: 28px;
+            color: #ff1493;
+            font-weight: bold;
+        }
+
+        @keyframes zoomSuave {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.05);
+            }
+        }
+
+        button {
+            margin-top: 40px;
+            padding: 12px 35px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="foto-container">
+        <!-- TROQUE "sua-foto.jpg" PELO NOME REAL DA SUA IMAGEM -->
+        <img src="sua-foto.jpg" alt="Nossa foto">
+    </div>
+
+    <div class="frase">
+        O começo da nossa história 💖
+    </div>
+
+    <button onclick="voltarInicio()">
+        Voltar ao início 🌸
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("mostrar");
+        });
+
+        function voltarInicio() {
+            document.body.style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = "index.html";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
