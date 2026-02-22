@@ -19,7 +19,8 @@ body {
 
     min-height: 100vh;
     opacity: 0;
-    transition: opacity 0.8s ease, background-color 0.5s ease;
+    transition: opacity 0.8s ease, background 0.6s ease;
+    overflow-x: hidden;
 }
 
 body.mostrar {
@@ -74,7 +75,7 @@ body.mostrar {
 }
 
 .sim {
-    background-color: #32cd32;
+    background: linear-gradient(45deg, #32cd32, #00ff7f);
     color: white;
 }
 
@@ -88,31 +89,35 @@ body.mostrar {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 55px;
+    font-size: 60px;
     font-weight: bold;
     color: white;
+    text-shadow: 0 0 20px rgba(255,255,255,0.8);
     display: none;
     z-index: 9999;
 }
 
+/* Confetes */
+.confete {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: cair linear forwards;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
-    .titulo {
-        font-size: 32px;
-    }
-
-    .texto {
-        font-size: 16px;
-    }
-
-    .pergunta {
-        font-size: 22px;
-    }
-
-    .botao {
-        font-size: 16px;
-        padding: 12px 25px;
-    }
+    .titulo { font-size: 32px; }
+    .texto { font-size: 16px; }
+    .pergunta { font-size: 22px; }
+    .botao { font-size: 16px; padding: 12px 25px; }
 }
 
 </style>
@@ -122,15 +127,9 @@ body.mostrar {
 
 <div class="container">
 
-    <div class="titulo">
-        Fim... 💗
-    </div>
+    <div class="titulo">Fim... 💗</div>
 
     <div class="texto">
-        Bom, finalizo aqui. Espero que cê tenha gostado, não só do site que deu <strong>muuuuito trabalho</strong>.<br><br>
-
-        Tudo isso foi feito com muito amor e dedicação.<br><br>
-
         Eu <strong>te amo</strong>, e quero passar o resto da minha vida com você ❤️.
     </div>
 
@@ -162,22 +161,44 @@ function aceitou() {
     let mensagem = document.getElementById("mensagem");
     let som = document.getElementById("somResposta");
 
-    // muda fundo
-    document.body.style.backgroundColor = "#00cc66";
+    // Fundo verde bonito
+    document.body.style.background = "linear-gradient(135deg, #00c853, #69f0ae)";
 
-    // mostra mensagem
     mensagem.style.display = "block";
-
-    // toca som
     som.play();
 
-    // depois de 3 segundos volta ao normal
+    criarConfetes();
+
     setTimeout(function() {
-        document.body.style.backgroundColor = "#ffd6e7";
+        document.body.style.background = "#ffd6e7";
         mensagem.style.display = "none";
         som.pause();
         som.currentTime = 0;
+        removerConfetes();
     }, 3000);
+}
+
+function criarConfetes() {
+    for (let i = 0; i < 120; i++) {
+        let confete = document.createElement("div");
+        confete.classList.add("confete");
+
+        confete.style.left = Math.random() * 100 + "vw";
+        confete.style.backgroundColor = coresAleatorias();
+        confete.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+        document.body.appendChild(confete);
+    }
+}
+
+function removerConfetes() {
+    let confetes = document.querySelectorAll(".confete");
+    confetes.forEach(c => c.remove());
+}
+
+function coresAleatorias() {
+    const cores = ["#ff0", "#ff69b4", "#00f", "#f00", "#0ff", "#fff"];
+    return cores[Math.floor(Math.random() * cores.length)];
 }
 
 </script>
