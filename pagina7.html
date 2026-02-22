@@ -1,166 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Final</title>
+<meta charset="UTF-8">
+<title>Final</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffd6e7;
-            font-family: Arial, sans-serif;
+<style>
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffd6e7;
+    font-family: Arial, sans-serif;
+    text-align: center;
 
-            min-height: 100vh; /* mais seguro que height */
-            text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
+    min-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.8s ease, background-color 0.5s ease;
+}
 
-        body.mostrar {
-            opacity: 1;
-        }
+body.mostrar {
+    opacity: 1;
+}
 
-        .container {
-            margin-top: 60px;
-            max-width: 850px;
-            padding: 20px 20px 120px 20px; 
-            /* espaço extra embaixo para não cobrir texto */
-        }
+.container {
+    margin-top: 60px;
+    max-width: 850px;
+    padding: 20px;
+}
 
-        .titulo {
-            font-size: 48px;
-            font-weight: bold;
-            color: #ff1493;
-            margin-bottom: 30px;
-        }
+.titulo {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff1493;
+    margin-bottom: 30px;
+}
 
-        .texto {
-            font-size: 20px;
-            color: #c71585;
-            line-height: 1.8;
-        }
+.texto {
+    font-size: 20px;
+    color: #c71585;
+    line-height: 1.8;
+}
 
-        /* BOTÃO FIXO E CENTRALIZADO */
-        button {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+.pergunta {
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff1493;
+}
 
-            padding: 15px 40px;
-            font-size: 20px;
-            border: none;
-            border-radius: 12px;
-            background-color: #ff69b4;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+.botoes {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
 
-        button:hover {
-            background-color: #ff1493;
-            transform: translateX(-50%) scale(1.05);
-        }
+.botao {
+    padding: 15px 35px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .titulo {
-                font-size: 32px;
-            }
+.botao:hover {
+    transform: scale(1.08);
+}
 
-            .texto {
-                font-size: 16px;
-            }
+.sim {
+    background-color: #32cd32;
+    color: white;
+}
 
-            button {
-                font-size: 16px;
-                padding: 12px 30px;
-            }
-        }
-    </style>
+.nao {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+.mensagem {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 55px;
+    font-weight: bold;
+    color: white;
+    display: none;
+    z-index: 9999;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 32px;
+    }
+
+    .texto {
+        font-size: 16px;
+    }
+
+    .pergunta {
+        font-size: 22px;
+    }
+
+    .botao {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="titulo">
-            Fim... 💗
-        </div>
-
-        <div class="texto">
-            Bom, finalizo aqui.  
-            Espero que cê tenha gostado, não só do site que deu <strong>muuuuito trabalho (2 dias de trabalho)</strong>.  
-
-            <br>
-
-            Tipo assim, o site está bem simples, mas você não sabe o trabalho que dá para fazer tudo.  
-            É muito código... mas valeu a pena.
-
-            <br>
-
-            Espero que tudo ocorra do jeito que eu imagino.  
-            Tudo isso foi feito com muito amor e dedicação por mim.
-
-            <br>
-
-            Espero que tenha aceitado… aliás, espero que aceite.  
-            Imagino que aceite kakakakak.
-
-            <br>
-
-            Enfim, vou usar o resto de página que tenho para me declarar🌝, porque eu sou um cara romântico 🥴.
-            
-            <br>
-
-            Um dos dias mais importantes da minha vida, é aquele dia que eu derrubei o copo. Por quê?
-
-            <br>
-            
-            porque foi o dia, que eu te olhei pela primeira vez de uma forma diferente, você me olhou, eu te olhei, nós se olhamos, aquele dia eu me apaixonei, foi amor a primeira vista, estava tão linda, radiante, com aqueles olhos radiantes, desci da van espantado, ninguém nunca tinha me olhada daquele jeito, mecheu comigo.
-
-            <br>
-
-            Hoje, posso falar com toda certeza, que <strong>você</strong> foi umas das melhores oportunidades que já aconteceram na minha vida, não consigo imaginar minha vida sem <strong>você</strong>...
-            
-            <br>
-
-            Eu <strong>te amo</strong>, e quero passar o resto da minha vida com você, eu não prometo riquezas, mas eu prometo muuito amor e prosperidade, <strong>você</strong> é o amor da minha vida, e não quero cansar de falar isso ❤️.
-eu te Amooooooo♥️♥️🥰🥰.
-            <br>
-            <br>
-
-            Obrigado por tudo... 💖
-            <br>
-             <strong>linda😳<br>cheirosa🥴<br>amor da minha vida🌝<br></strong>
-
-        </div>
-
+    <div class="titulo">
+        Fim... 💗
     </div>
 
-    <button onclick="mudarPagina('foto.html')">
-        Ver nossa foto 📸
-    </button>
+    <div class="texto">
+        Bom, finalizo aqui. Espero que cê tenha gostado, não só do site que deu <strong>muuuuito trabalho</strong>.<br><br>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add("mostrar");
-        });
+        Tudo isso foi feito com muito amor e dedicação.<br><br>
 
-        function mudarPagina(url) {
-            document.body.style.opacity = "0";
-            setTimeout(function() {
-                window.location.href = url;
-            }, 800);
-        }
-    </script>
+        Eu <strong>te amo</strong>, e quero passar o resto da minha vida com você ❤️.
+    </div>
+
+    <div class="pergunta">
+        aceita viver comigo para sempre 😁🌷?
+    </div>
+
+    <div class="botoes">
+        <button class="botao sim" onclick="aceitou()">Simm 💚</button>
+        <button class="botao nao">não😭😭😭</button>
+    </div>
+
+</div>
+
+<div class="mensagem" id="mensagem">
+    EBAAAAAA 💚😭
+</div>
+
+<audio id="somResposta" src="escrevendo.mp3"></audio>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.classList.add("mostrar");
+});
+
+function aceitou() {
+
+    let mensagem = document.getElementById("mensagem");
+    let som = document.getElementById("somResposta");
+
+    // muda fundo
+    document.body.style.backgroundColor = "#00cc66";
+
+    // mostra mensagem
+    mensagem.style.display = "block";
+
+    // toca som
+    som.play();
+
+    // depois de 3 segundos volta ao normal
+    setTimeout(function() {
+        document.body.style.backgroundColor = "#ffd6e7";
+        mensagem.style.display = "none";
+        som.pause();
+        som.currentTime = 0;
+    }, 3000);
+}
+
+</script>
 
 </body>
 </html>
