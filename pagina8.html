@@ -1,1 +1,108 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Começo da Nossa História</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffe6f0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container central */
+.container {
+    position: relative;
+    text-align: center;
+}
+
+/* Moldura estilo madeira */
+.moldura {
+    padding: 15px;
+    background: linear-gradient(45deg, #8b5a2b, #a0522d);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    display: inline-block;
+}
+
+/* Imagem */
+.moldura img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+/* Texto sobre a imagem */
+.titulo {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    font-weight: bold;
+    color: #d63384;
+}
+
+/* Corações */
+.heart {
+    position: absolute;
+    bottom: -50px;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: subir linear infinite;
+}
+
+@keyframes subir {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="titulo">Começo da Nossa História</div>
+
+    <div class="moldura">
+        <img src="imagem_anel.png" alt="Imagem do Anel">
+    </div>
+</div>
+
+<script>
+function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("heart");
+    coracao.innerHTML = "❤";
+
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.fontSize = (15 + Math.random() * 35) + "px";
+    coracao.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(() => {
+        coracao.remove();
+    }, 8000);
+}
+
+setInterval(criarCoracao, 300);
+</script>
+
+</body>
+</html>
