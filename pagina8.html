@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Começo da Nossa História</title>
+<title>O Começo da Nossa História</title>
 
 <style>
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffe6f0;
+    background: linear-gradient(180deg, #ffe6f0, #ffd6eb);
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,43 +21,88 @@ body {
 .container {
     position: relative;
     text-align: center;
+    animation: flutuar 4s ease-in-out infinite;
 }
 
-/* Moldura estilo madeira */
+/* Animação leve de flutuar */
+@keyframes flutuar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Título */
+.titulo {
+    font-size: 34px;
+    font-weight: bold;
+    color: #c9184a;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+/* Subtítulo */
+.subtitulo {
+    font-size: 18px;
+    color: #9d174d;
+    margin-bottom: 20px;
+}
+
+/* Moldura estilo madeira melhorada */
 .moldura {
-    padding: 15px;
-    background: linear-gradient(45deg, #8b5a2b, #a0522d);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    padding: 20px;
+    background: linear-gradient(45deg, #8b5a2b, #a0522d, #cd853f);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
     display: inline-block;
+    position: relative;
 }
 
-/* Imagem */
+/* Brilho decorativo */
+.moldura::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 25px rgba(255,255,255,0.2);
+}
+
+/* Imagem maior */
 .moldura img {
-    width: 300px;
-    height: auto;
-    border-radius: 10px;
+    width: 420px;
+    max-width: 90vw;
+    border-radius: 15px;
     display: block;
 }
 
-/* Texto sobre a imagem */
-.titulo {
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 28px;
-    font-weight: bold;
-    color: #d63384;
+/* Botão */
+.botao {
+    margin-top: 25px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
 }
 
-/* Corações */
+.botao:hover {
+    background-color: #c9184a;
+    transform: scale(1.05);
+}
+
+/* Corações animados */
 .heart {
     position: absolute;
     bottom: -50px;
     color: #ff4d6d;
-    font-size: 20px;
     animation: subir linear infinite;
+    opacity: 0.8;
 }
 
 @keyframes subir {
@@ -71,17 +115,35 @@ body {
         opacity: 0;
     }
 }
+
+/* Pequenos brilhos */
+.sparkle {
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    animation: brilho 2s infinite alternate;
+}
+
+@keyframes brilho {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <div class="titulo">Começo da Nossa História</div>
+    <div class="titulo">O Começo da Nossa História 💖</div>
+    <div class="subtitulo">Um momento simples que se transformou em algo eterno...</div>
 
     <div class="moldura">
-        <img src="imagem_anel.jpg" alt="Imagem do Anel">
+        <img src="imagem_anel.jpg" alt="Nosso momento especial">
     </div>
+
+    <button class="botao" onclick="alert('E essa é apenas a primeira página da nossa história... ❤️')">
+        Continuar
+    </button>
 </div>
 
 <script>
@@ -92,7 +154,7 @@ function criarCoracao() {
 
     coracao.style.left = Math.random() * 100 + "vw";
     coracao.style.fontSize = (15 + Math.random() * 35) + "px";
-    coracao.style.animationDuration = (3 + Math.random() * 5) + "s";
+    coracao.style.animationDuration = (4 + Math.random() * 4) + "s";
 
     document.body.appendChild(coracao);
 
@@ -101,7 +163,23 @@ function criarCoracao() {
     }, 8000);
 }
 
+function criarBrilho() {
+    const brilho = document.createElement("div");
+    brilho.classList.add("sparkle");
+    brilho.innerHTML = "✨";
+
+    brilho.style.left = Math.random() * 100 + "vw";
+    brilho.style.top = Math.random() * 100 + "vh";
+
+    document.body.appendChild(brilho);
+
+    setTimeout(() => {
+        brilho.remove();
+    }, 2000);
+}
+
 setInterval(criarCoracao, 300);
+setInterval(criarBrilho, 500);
 </script>
 
 </body>
